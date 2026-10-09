@@ -9,7 +9,6 @@ COPY . .
 
 EXPOSE 5000
 
-# TODO 1: Completa el comando para ejecutar run.py con python.
-#         (En producción real se usaría gunicorn en lugar del servidor
-#         de desarrollo de Flask, pero para el taller esto es suficiente.)
+# Ejecuta la aplicación Flask con run.py
 CMD ["python", "run.py"]
+

@@ -7,17 +7,18 @@ ninguna base de datos. Su única fuente de datos es la API (servicio
 """
 
 from flask import Flask
-
 from config import Config
 
 
 def create_app(config_class=Config):
     app = Flask(__name__)
 
-    # TODO 1: Carga la configuración: app.config.from_object(config_class)
+    # 1. Carga la configuración
+    app.config.from_object(config_class)
 
-    # TODO 2: Importa el blueprint 'main' desde .routes y regístralo:
-    #         from .routes import main
-    #         app.register_blueprint(main)
+    # 2. Importa y registra el blueprint 'main'
+    from .routes import main
+    app.register_blueprint(main)
 
     return app
+

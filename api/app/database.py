@@ -8,16 +8,14 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import declarative_base, sessionmaker
 
-# TODO 1: Lee la variable de entorno DATABASE_URL (definida en
-#         docker-compose.yml) usando os.environ["DATABASE_URL"]
-DATABASE_URL = None
+# 1. Lee la variable de entorno DATABASE_URL
+DATABASE_URL = os.environ["DATABASE_URL"]
 
-# TODO 2: Crea el engine de SQLAlchemy con create_engine(DATABASE_URL)
-engine = None
+# 2. Crea el engine de SQLAlchemy
+engine = create_engine(DATABASE_URL)
 
-# TODO 3: Crea la fábrica de sesiones:
-#   SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-SessionLocal = None
+# 3. Crea la fábrica de sesiones
+SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Clase base de la que heredarán todos los modelos (models.py)
 Base = declarative_base()
@@ -33,3 +31,4 @@ def get_db():
         yield db
     finally:
         db.close()
+

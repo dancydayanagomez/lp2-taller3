@@ -11,10 +11,5 @@ COPY . .
 
 EXPOSE 8000
 
-# TODO 1: Completa el comando para levantar el servidor uvicorn:
-#   - módulo: app.main:app
-#   - host: 0.0.0.0 (para que sea accesible desde fuera del contenedor)
-#   - port: 8000
-#   - --reload es útil en desarrollo (recarga al detectar cambios),
-#     pero debe quitarse en un ambiente de producción real.
+# Comando para levantar el servidor uvicorn
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
